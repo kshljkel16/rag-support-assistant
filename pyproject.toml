@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-support-eval"
+version = "0.1.0"
+description = "A customer-support RAG assistant for a fictional bank, evaluated on retrieval, groundedness, refusals, cost and latency."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "rank-bm25>=0.2.2",
+    "openai>=1.40",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dense = ["sentence-transformers>=3.0"]      # Step 3
+api = ["fastapi>=0.110", "uvicorn>=0.29"]   # Step 6
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
